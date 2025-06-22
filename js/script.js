@@ -238,28 +238,34 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  const bookLink = document.querySelector('a[href^="#"]');
-  if (bookLink) {
-    bookLink.addEventListener("click", function (event) {
-      event.preventDefault();
+  const anchorLinks = document.querySelectorAll('a[href^="#"]'); // Выбираем все ссылки, href которых начинается с "#"
 
-      const targetId = this.getAttribute("href");
+  if (anchorLinks.length > 0) {
+    // Проверяем, найдены ли вообще такие ссылки
+    anchorLinks.forEach(function (link) {
+      // Перебираем каждую найденную ссылку
+      link.addEventListener("click", function (event) {
+        event.preventDefault(); // Отменяем стандартное поведение ссылки (резкий переход)
 
-      const targetElement = document.querySelector(targetId);
-      if (targetElement) {
-        const headerHeight = 80;
-        const scrollPosition =
-          targetElement.getBoundingClientRect().top +
-          window.scrollY -
-          headerHeight;
+        const targetId = this.getAttribute("href"); // Получаем значение href (например, "#мояСекция")
+        const targetElement = document.querySelector(targetId); // Находим элемент, к которому нужно прокрутить
 
-        window.scrollTo({
-          top: scrollPosition,
-          behavior: "smooth",
-        });
-      }
+        if (targetElement) {
+          // Если целевой элемент найден
+          const headerHeight = 80; // Высота вашего фиксированного хедера (шапки сайта)
+          const scrollPosition =
+            targetElement.getBoundingClientRect().top + // Позиция элемента относительно видимой части окна
+            window.scrollY - // Текущая позиция прокрутки страницы
+            headerHeight; // Вычитаем высоту хедера, чтобы элемент был виден под ним
+
+          window.scrollTo({
+            top: scrollPosition, // Конечная позиция для прокрутки
+            behavior: "smooth", // Делаем прокрутку плавной
+          });
+        }
+      });
     });
   } else {
-    console.warn("Ссылка начинающаяся на #book, не найдена.");
+    console.warn("Якорные ссылки на странице не найдены."); // Предупреждение, если ни одной якорной ссылки нет
   }
 });
