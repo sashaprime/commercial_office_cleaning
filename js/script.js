@@ -238,7 +238,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  const bookLink = document.querySelector('a[href^="#book"]');
+  const bookLink = document.querySelector('a[href^="#"]');
   if (bookLink) {
     bookLink.addEventListener("click", function (event) {
       event.preventDefault();
