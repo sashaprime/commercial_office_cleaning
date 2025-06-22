@@ -1,0 +1,220 @@
+.reviews {
+    padding: 50px 0;
+    background: var(--gray);
+
+    &__h2 {
+        font-family: var(--font-family-second);
+        font-size: 40px;
+        font-weight: 500;
+        text-align: center;
+        margin-bottom: 48px;
+    }
+
+    /* Стили по умолчанию для десктопа, планшета и мобильного альбомного вида (> 480px) */
+    /* Здесь карточки отображаются как адаптивная сетка */
+    .mySwiper .swiper-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        /* Позволяет карточкам переноситься на новую строку */
+        gap: 20px;
+        /* Расстояние между карточками */
+        align-items: stretch;
+    }
+
+    .reviews__item {
+        flex-grow: 0;
+        flex-shrink: 1;
+        height: auto !important;
+
+        /* 3 карточки в ряд на широких экранах */
+        flex-basis: calc((100% - (2 * 20px)) / 3);
+
+        padding: 20px 10px;
+        background: var(--white);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        /* Пример: добавьте тень для карточек */
+
+        @media (max-width: 968px) {
+            /* 2 карточки в ряд на планшетах */
+            flex-basis: calc((100% - 20px) / 2);
+        }
+
+        @media (max-width: 768px) {
+            /* 2 карточки в ряд на небольших планшетах/больших мобильных в альбомной ориентации */
+            flex-basis: calc((100% - 20px) / 2);
+        }
+
+        /* 1 карточка в ряд на экранах от 481px до 768px (если вы хотите такой шаг) */
+        /* Или оставьте 2 карточки, если вам нравится grid-layout */
+        // @media (max-width: 600px) {
+        //     flex-basis: 100%; /* Если вы хотите одну карточку до 480px */
+        // }
+    }
+
+    /* Скрываем навигацию и пагинацию Swiper по умолчанию (когда слайдер не активен) */
+    .reviews__pagination,
+    .reviews__button-next,
+    .reviews__button-prev {
+        display: none;
+    }
+
+    /* Медиа-запрос для мобильных устройств (менее 480px), где Swiper должен быть активен */
+    @media (max-width: 480px) {
+        .mySwiper .swiper-wrapper {
+            flex-wrap: nowrap;
+            /* Важно: отключаем перенос, когда Swiper активен */
+        }
+
+        .reviews__item {
+            /* Swiper будет устанавливать width: XXXpx; через inline-стили.
+               Эти стили ниже просто для того, чтобы элемент был готов к работе Swiper. */
+            flex-basis: 100%;
+            /* Каждый слайд занимает всю ширину */
+            flex-shrink: 0;
+            /* Чтобы слайды не сжимались */
+        }
+
+        /* Показываем навигацию и пагинацию только на мобильных (< 480px) */
+        .reviews__pagination,
+        .reviews__button-next,
+        .reviews__button-prev {
+            display: block;
+        }
+
+        /* Стили для пагинации */
+        .reviews__pagination {
+            margin-top: 20px;
+            position: relative;
+            bottom: unset;
+            text-align: center;
+        }
+
+        /* Исправленные стили для кнопок навигации */
+        .reviews__button-next,
+        .reviews__button-prev {
+            position: absolute;
+            top: 50%;
+            z-index: 10;
+            cursor: pointer;
+
+            // Размеры кнопок
+            width: 32px;
+            height: 32px;
+
+            // Внешний вид
+            background: var(--white);
+            border: 1px solid #ddd;
+            border-radius: 50%;
+
+            // Центрирование иконки
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            // Стили для стрелок
+            color: #333;
+            font-size: 14px;
+            font-weight: bold;
+
+            // Эффекты
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+
+            // Убираем стандартные стили Swiper
+            &:after {
+                font-size: 14px;
+                font-weight: bold;
+            }
+        }
+
+        .reviews__button-prev {
+            left: 10px;
+        }
+
+        .reviews__button-next {
+            right: 10px;
+        }
+    }
+
+    /* Общие стили для содержимого карточек */
+    &__item-title,
+    &__item-stars {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        margin-bottom: 16px;
+    }
+
+    &__item-stars {
+        @media (max-width: 580px) {
+            flex-basis: 100%;
+            flex-wrap: wrap;
+        }
+    }
+
+    &__item-text {
+        margin-bottom: 10px;
+    }
+}
+
+// Дополнительная кастомизация стандартных классов Swiper для этого слайдера
+.mySwiper {
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        @media (max-width: 480px) {
+            width: 32px;
+            height: 32px;
+            background: var(--white);
+            border: 1px solid #ddd;
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+
+            &:after {
+                font-size: 14px;
+                font-weight: bold;
+                color: #333;
+            }
+        }
+
+        @media (min-width: 481px) {
+            display: none !important;
+        }
+    }
+
+    .swiper-button-prev {
+        @media (max-width: 480px) {
+            left: 10px;
+        }
+    }
+
+    .swiper-button-next {
+        @media (max-width: 480px) {
+            right: 10px;
+        }
+    }
+
+    // Стили для пагинации
+    .swiper-pagination {
+        @media (max-width: 480px) {
+            position: relative;
+            margin-top: 20px;
+
+            .swiper-pagination-bullet {
+                width: 8px;
+                height: 8px;
+                background: #ccc;
+                opacity: 1;
+
+                &.swiper-pagination-bullet-active {
+                    background: #333;
+                }
+            }
+        }
+
+        @media (min-width: 481px) {
+            display: none !important;
+        }
+    }
+}

@@ -1,0 +1,55 @@
+.header {
+    position: fixed;
+    height: 80px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    width: 100%;
+    z-index: 99;
+
+    &__logo {
+        max-width: 200px;
+    }
+
+    &__inner {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 32px;
+        padding-bottom: 32px;
+
+        @include tablet {
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+    }
+
+    &__menu {
+        margin: 0 auto;
+    }
+
+    &__menu-list {
+        display: flex;
+        gap: 24px;
+    }
+
+    &__book {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: var(--accent);
+        padding: 15.5px 32px;
+        height: 100%;
+        color: var(--white);
+        text-align: center;
+
+
+        span {
+            display: block;
+        }
+
+        @include tablet {
+            display: none;
+        }
+    }
+}

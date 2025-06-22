@@ -1,0 +1,23 @@
+.flatpickr-day {
+  transition: background-color 0.2s ease-in-out;
+  &:hover {
+    background: var(--hover) !important;
+  }
+}
+
+.flatpickr-day.today {
+  border-color: var(--accent) !important;
+  transition: background-color 0.2s ease-in-out;
+  &:hover {
+    background: var(--accent) !important;
+  }
+}
+
+.flatpickr-prev-month:hover,
+.flatpickr-next-month:hover {
+  color: var(--accent) !important;
+}
+.flatpickr-prev-month:hover svg,
+.flatpickr-next-month:hover svg {
+  fill: var(--accent) !important;
+}

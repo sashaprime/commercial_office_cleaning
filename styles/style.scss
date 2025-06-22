@@ -1,0 +1,11 @@
+@import "normalize", "fonts", "mixins", "media", "variables", "utils", "globals";
+
+@import "blocks/header", "blocks/burger-button", "blocks/mobile-overlay",
+  "blocks/cross-button", "blocks/no-scroll", "blocks/offer", "blocks/about",
+  "blocks/advantages", "blocks/service", "blocks/work", "blocks/faq",
+  "blocks/seen", "blocks/reviews", "blocks/book", "blocks/flatpicker",
+  "blocks/footer";
+
+// *{
+//     outline: 1px solid red;
+// }

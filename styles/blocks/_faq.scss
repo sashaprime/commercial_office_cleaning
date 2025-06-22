@@ -1,0 +1,122 @@
+.faq {
+    padding-top: 48px;
+    padding-bottom: 48px;
+
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &__left {
+        flex: 1 0 50%;
+
+        @include tablet {
+            flex: 1 0 100%;
+        }
+    }
+
+    &__h2 {
+        font-family: var(--font-family-second);
+        font-weight: 500;
+        font-size: 40px;
+        text-align: center;
+
+        @include tablet {
+            margin-bottom: 24px;
+        }
+    }
+
+    &__right {
+        flex: 1 0 50%;
+
+        @include tablet {
+            flex: 1 0 100%;
+        }
+    }
+
+    &__accordion-item {
+        border-bottom: 1px solid var(--dark-gray);
+    }
+
+    &__title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        cursor: pointer;
+    }
+
+    &__h4 {
+        font-weight: 500;
+        font-size: 16px;
+        max-width: calc(100% - 14px);
+    }
+
+    &__button {
+        position: relative;
+        width: 14px;
+        height: 14px;
+        cursor: pointer;
+
+        &::after,
+        &::before {
+            position: absolute;
+            content: '';
+            top: 50%;
+            left: 50%;
+            width: 14px;
+            height: 2px;
+            background-color: var(--black);
+            border-radius: 5px;
+        }
+
+        &::before {
+            transform: translate(-50%, -50%) rotate(0deg); // горизонтальная
+        }
+
+        &::after {
+            transform: translate(-50%, -50%) rotate(90deg); // вертикальная
+        }
+
+        &.active::before {
+            transform: translate(-50%, -50%) rotate(45deg);
+            transition: rotate 0.5s ease;
+        }
+
+        &.active::after {
+            transform: translate(-50%, -50%) rotate(-45deg);
+            transition: rotate 0.5s ease;
+        }
+    }
+
+    &__text {
+        // padding-top: 8px;
+        // padding-bottom: 8px;
+        // font-weight: 300;
+        // font-size: 16px;
+        max-height: 0px;
+        overflow: hidden;
+        opacity: 0;
+        transition: max-height 0.4s ease, opacity 0.4s ease;
+        pointer-events: none;
+    }
+
+    &__text.open {
+        
+        opacity: 1;
+    }
+
+    &__list {
+        list-style: disc inside;
+        padding-left: 0; // убираем лишние отступы
+        margin: 0;  // сброс внешнего отступа
+        padding-top: 8px;
+        padding-bottom: 8px;
+
+        li {
+            font-weight: 300;
+            font-size: 16px;
+        }
+    }
+}

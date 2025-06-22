@@ -1,0 +1,111 @@
+.offer {
+    position: relative;
+    background-color: var(--white-dark);
+    padding: 85px 0;
+
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+
+        @include tablet {
+            flex-direction: column;
+        }
+    }
+
+    &__content {
+        max-width: 715px;
+
+        @include tablet {
+            max-width: 100%;
+        }
+    }
+
+    &__h1 {
+        font-family: var(--font-family-second);
+        font-weight: 700;
+        margin-bottom: 24px;
+    }
+
+    &__text {
+        font-weight: 400;
+        font-size: 24px;
+        margin-bottom: 24px;
+    }
+
+    &__left {
+        flex: 1 1 50%;
+        display: flex;
+        align-items: center;
+        max-width: 50%;
+        padding-right: 20px;
+
+        @include tablet {
+            padding-bottom: 80px;
+            flex: 1 1 100%;
+            max-width: 100%;
+            padding-right: 0;
+        }
+    }
+
+    &__right {
+        position: relative;
+        flex: 1 1 50%;
+        height: 415px;
+    }
+
+    &__buttons {
+        display: flex;
+        gap: 16px;
+
+        @include mobile-s {
+            flex-wrap: wrap;
+        }
+    }
+
+    &__button {
+        font-weight: 700;
+        font-size: 20px;
+        padding: 13px 32px;
+        border-radius: 5px;
+
+        @include mobile-s {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+
+    &__button-green {
+        background-color: var(--accent);
+        color: var(--white);
+    }
+
+    &__button-white {
+        background-color: transparent;
+        border: 1px solid #000;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        background: url(../images/01-offer/offer-bg.jpg) no-repeat center center / cover;
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: 580px;
+        max-width: 50%;
+
+        @include tablet {
+            display: none;
+        }
+    }
+
+    &__pic {
+        display: none;
+        background: url(../images/01-offer/offer-bg.jpg) no-repeat center center / cover;
+        height: 400px;
+
+        @include tablet {
+            display: block;
+        }
+    }
+}

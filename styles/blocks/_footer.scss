@@ -1,0 +1,25 @@
+.footer {
+  padding: 18px 0;
+  background-color: var(--grey-black);
+  color: var(--white);
+  // .footer__wrapper
+  &__wrapper {
+    @include mobile {
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+  }
+  // .footer__privacy
+  &__privacy {
+    @include mobile {
+      flex-basis: 100%;
+    }
+  }
+  // .footer__terms
+  &__terms {
+    margin: 0 auto;
+    @include mobile {
+      flex-basis: 100%;
+    }
+  }
+}

@@ -1,0 +1,145 @@
+.seen {
+    padding: 48px 0;
+    background: var(--gray);
+
+    &__h2 {
+        font-family: var(--font-family-second);
+        font-weight: 500;
+        text-align: center;
+        margin-bottom: 48px;
+    }
+
+    &__carousel-wrapper {
+        position: relative;
+        overflow: hidden;
+    }
+
+    &__carousel {
+        width: 100%;
+        padding: 0 32px;
+
+        // Убираем стандартные стили, так как теперь используем Swiper
+        // display: flex;
+        // gap: 48px;
+        // justify-content: center;
+        // align-items: center;
+        // transition: transform 0.3s ease;
+        // overflow-x: auto;
+        // scroll-behavior: smooth;
+        // -webkit-overflow-scrolling: touch;
+        // scroll-snap-type: x mandatory;
+        // scrollbar-width: none;
+        // -ms-overflow-style: none;
+    }
+
+    &__item {
+        flex: 0 0 auto;
+        width: 180px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            margin: 0 auto;
+            max-width: 100%;
+            height: auto;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+
+            &:hover {
+                filter: grayscale(0%);
+                opacity: 1;
+            }
+        }
+    }
+
+    &__carousel-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: var(--white);
+        border: none;
+        border-radius: 50%;
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 10;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+
+        &:hover {
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        &.prev {
+            left: 0;
+        }
+
+        &.next {
+            right: 0;
+        }
+    }
+}
+
+// Кастомизация стилей Swiper
+.swiper {
+    &-wrapper {
+        align-items: center;
+    }
+
+    &-slide {
+        width: auto !important;
+    }
+}
+
+// Адаптивность
+@media (max-width: 768px) {
+    .seen {
+        padding: 32px 0;
+
+        &__h2 {
+            margin-bottom: 32px;
+            font-size: 1.5rem;
+        }
+
+        &__carousel {
+            padding: 0 20px;
+        }
+
+        &__item {
+            width: 140px;
+        }
+
+        &__carousel-btn {
+            width: 36px;
+            height: 36px;
+        }
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        width: 36px;
+        height: 36px;
+
+        &:after {
+            font-size: 14px;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .seen {
+        &__item {
+            width: 120px;
+        }
+
+        &__carousel {
+            padding: 0 16px;
+        }
+    }
+}

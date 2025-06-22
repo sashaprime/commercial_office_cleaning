@@ -1,0 +1,49 @@
+.advantages {
+    background: var(--gray);
+
+    .container {
+        text-align: center;
+    }
+
+    &__h2 {
+        font-family: var(--font-family-second);
+        font-weight: 500;
+        font-size: 40px;
+        margin-bottom: 24px;
+    }
+
+    &__text {
+        font-weight: 300;
+        font-size: 16px;
+        margin-bottom: 48px;
+    }
+
+    &__items {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    &__item {
+        flex: 1 0 calc(33.3333% - 24px);
+        max-width: calc(33.3333% - 48px);
+        vertical-align: middle;
+        text-align: center;
+
+        @include tablet {
+            flex: 1 0 100%;
+            max-width: 100%;
+        }
+
+        img {
+            margin: 0 auto;
+            margin-bottom: 24px;
+        }
+    }
+
+    &__h4 {
+        margin-bottom: 8px;
+        font-weight: 500;
+    }
+
+}
